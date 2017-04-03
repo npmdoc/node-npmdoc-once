@@ -1,17 +1,40 @@
 {
-    "buildNpmdoc":"once",
+    "author": "kai zhu <kaizhu256@gmail.com>",
+    "buildNpmdoc": "once",
+    "description": "api documentation for [once (v1.4.0)](https://github.com/isaacs/once#readme) [![npm package](https://img.shields.io/npm/v/npmdoc-once.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-once) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-once.svg)](https://travis-ci.org/npmdoc/node-npmdoc-once)",
     "devDependencies": {
-        "once": "*",
         "electron-lite": "kaizhu256/node-electron-lite#alpha",
+        "once": "*",
         "utility2": "kaizhu256/node-utility2#alpha"
     },
-    "name":"npmdoc-once",
+    "engines": {
+        "node": ">=4.0"
+    },
+    "homepage": "https://github.com/npmdoc/node-npmdoc-once",
+    "keywords": [
+        "documentation",
+        "once"
+    ],
+    "license": "MIT",
+    "main": "lib.npmdoc_once.js",
+    "name": "npmdoc-once",
+    "nameAlias": "npmdoc_once",
+    "nameOriginal": "npmdoc-once",
+    "os": [
+        "darwin",
+        "linux"
+    ],
     "repository": {
         "type": "git",
         "url": "https://github.com/npmdoc/node-npmdoc-once.git"
     },
     "scripts": {
-        "build-ci": "utility2 shReadmeTest build_ci.sh"
+        "build-ci": "utility2 shReadmeTest build_ci.sh",
+        "env": "env",
+        "heroku-postbuild": "(set -e; npm install \"kaizhu256/node-utility2#alpha\"; utility2 shDeployHeroku)",
+        "postinstall": "if [ -f npm_scripts.sh ]; then ./npm_scripts.sh postinstall; fi",
+        "start": "(set -e; export PORT=${PORT:-8080}; utility2 start test.js)",
+        "test": "(set -e; export PORT=$(utility2 shServerPortRandom); utility2 test test.js)"
     },
     "version": "0.0.1"
 }
